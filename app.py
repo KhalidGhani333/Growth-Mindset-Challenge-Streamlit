@@ -8,10 +8,10 @@ from io import BytesIO
 
 #Set up our App
 st.set_page_config(page_title="Data Sweeper",layout="wide")
-st.title("Data Sweeper")
+st.title("🔍🧹 Data Sweeper")
 st.write("🚀 Welcome to Data Sweeper! Upload your CSV or Excel files and clean or convert them effortlessly.")
 
-uploaded_files = st.file_uploader("Upload you files (CSV or Excel):",type=["csv","xlsx"],
+uploaded_files = st.file_uploader("📂Upload you files (CSV or Excel):",type=["csv","xlsx"],
 accept_multiple_files=True)
 
 if uploaded_files:
@@ -36,7 +36,7 @@ if uploaded_files:
         st.dataframe(df.head())
 
         #option for data cleaning
-        st.subheader("🗑Data Cleaning Options")
+        st.subheader("⚙️🗑️ Data Cleaning Options")
         if st.checkbox(f"Clean Data for {file.name}"):
             col1,col2 = st.columns(2)
 
@@ -92,4 +92,4 @@ if uploaded_files:
                 mime=mime_type
 )
 
-st.success("All files processed successfully!")
+st.success("🎉📑 All files processed successfully!")
