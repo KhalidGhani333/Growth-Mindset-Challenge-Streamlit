@@ -1,9 +1,9 @@
-
+from fileinput import filename
 import streamlit as st
 import pandas as pd
 import os
 from io import BytesIO
-
+import plotly.express as px
 
 
 #Set up our App
@@ -18,18 +18,18 @@ if uploaded_files:
     for file in uploaded_files:
         file_ext = os.path.splitext(file.name)[-1].lower()
 
-        if file_ext == ".csv":
+        if file_ext == '.csv':
             df = pd.read_csv(file)
-        elif file_ext == ".xlsx":
+        elif file_ext == '.xlsx':
             df = pd.read_excel(file)
         else:
-            st.error(f"Unsupported file type:{file_ext}")
+            st.error(f"❌ Unsupported file format: {file_ext}")
             continue
 
 
         #display info about the file
         st.write(f"File Name:{file.name}")
-        st.write(f"File Size:{file.size/1024}KB")
+        st.write(f"File Size:{file.size/1024:.2f}KB")
 
         #show 5 rows of our df
         st.write("Preview the Head of the Dataframe")
